@@ -6,7 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/cache": "^11.13.1",
     "@heroicons/react": "^2.1.4",
+    "@mui/material-nextjs": "^6.1.5",
     "@tailwindcss/forms": "^0.5.7",
     "@vercel/postgres": "^0.8.0",
     "autoprefixer": "10.4.19",
