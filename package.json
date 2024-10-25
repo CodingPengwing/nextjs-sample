@@ -7,7 +7,10 @@
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@heroicons/react": "^2.1.4",
+    "@mui/material": "^6.1.5",
     "@mui/material-nextjs": "^6.1.5",
     "@tailwindcss/forms": "^0.5.7",
     "@vercel/postgres": "^0.8.0",
