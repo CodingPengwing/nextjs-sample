@@ -54,7 +54,6 @@ export default async function Page(props: {
       </div>
       <div className="my-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search customers..." />
-        {/* <CreateInvoice /> */}
       </div>
       <CustomerTable customers={customers} />
     </div>
