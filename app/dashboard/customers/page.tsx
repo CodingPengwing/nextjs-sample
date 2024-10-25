@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { CustomerField } from "@/app/lib/definitions";
 import { lusitana } from "@/app/ui/fonts";
 import Search from "@/app/ui/search";
+import Image from "next/image";
 
 function CustomerTable({ customers }: { customers: CustomerField[] }) {
   return (
@@ -17,7 +18,7 @@ function CustomerTable({ customers }: { customers: CustomerField[] }) {
       <Table sx={{ minWidth: 650 }} aria-label="customers table">
         <TableHead className="bg-slate-50">
           <TableRow>
-            <TableCell>Name</TableCell>
+            <TableCell>Customer</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">ID</TableCell>
           </TableRow>
@@ -28,7 +29,14 @@ function CustomerTable({ customers }: { customers: CustomerField[] }) {
               key={customer.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className="flex items-center gap-2">
+                <Image
+                  src={customer.image_url}
+                  className="rounded-full"
+                  width={28}
+                  height={28}
+                  alt={`${customer.name}'s profile picture`}
+                />
                 {customer.name}
               </TableCell>
               <TableCell align="right">{customer.email}</TableCell>
