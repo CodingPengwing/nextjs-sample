@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import type { User } from "@/app/lib/definitions";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -16,10 +16,19 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut, handlers } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "Email" },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "Password",
+        },
+      },
       async authorize(credentials) {
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
@@ -39,5 +48,7 @@ export const { auth, signIn, signOut } = NextAuth({
         return null;
       },
     }),
+
+    ...authConfig.providers,
   ],
 });
