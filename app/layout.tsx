@@ -1,6 +1,7 @@
 import "@/app/ui/global.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { inter } from "@/app/ui/fonts";
+import AuthProvider from "./context/AuthProvider";
 
 export default function RootLayout({
   children,
@@ -10,7 +11,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <AuthProvider>
+          <body className={`${inter.className} antialiased`}>{children}</body>
+        </AuthProvider>
       </AppRouterCacheProvider>
     </html>
   );
