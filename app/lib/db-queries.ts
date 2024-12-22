@@ -100,6 +100,10 @@ const dbDeleteInvoice = async function (id: string) {
   await prisma.invoices.delete({ where: { id } });
 };
 
+export const dbGetInvoices = async function () {
+  return await prisma.invoices.findMany();
+}
+
 export async function createInvoiceUsingForm(
   prevState: State,
   formData: FormData
