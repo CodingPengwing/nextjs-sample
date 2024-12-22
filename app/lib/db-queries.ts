@@ -3,7 +3,7 @@ import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Prisma, PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 
 const InvoiceDbCreateInput = z.object({
   customer_id: z.string({ invalid_type_error: "Please select a customer" }),
@@ -42,37 +42,37 @@ const prisma = new PrismaClient().$extends({
 
 /* Accounts --------------------------------------- */
 
-type NewAccountDbInput = {
-  name: string;
-  email: string;
-  password: string;
-};
+// type NewAccountDbInput = {
+//   name: string;
+//   email: string;
+//   password: string;
+// };
 
-const makeNewAccountDbInput = function ({
-  name,
-  email,
-  password,
-}: NewAccountDbInput) {
-  return Prisma.validator<Prisma.usersCreateInput>()({
-    name,
-    email,
-    password: bcrypt.hashSync(password, 10),
-  });
-};
+// const makeNewAccountDbInput = function ({
+//   name,
+//   email,
+//   password,
+// }: NewAccountDbInput) {
+//   return Prisma.validator<Prisma.usersCreateInput>()({
+//     name,
+//     email,
+//     password: bcrypt.hashSync(password, 10),
+//   });
+// };
 
-const dbCreateNewAccount = async function (input: NewAccountDbInput) {
-  await prisma.users.create({ data: makeNewAccountDbInput(input) });
-};
+// const dbCreateNewAccount = async function (input: NewAccountDbInput) {
+//   await prisma.users.create({ data: makeNewAccountDbInput(input) });
+// };
 
-const findUserByEmailDbInput = function (email: string) {
-  return Prisma.validator<Prisma.usersWhereInput>()({ email });
-};
+// const findUserByEmailDbInput = function (email: string) {
+//   return Prisma.validator<Prisma.usersWhereInput>()({ email });
+// };
 
-const dbFindUserByEmail = async function (email: string) {
-  return await prisma.users.findUnique({
-    where: findUserByEmailDbInput(email),
-  });
-};
+// const dbFindUserByEmail = async function (email: string) {
+//   return await prisma.users.findUnique({
+//     where: findUserByEmailDbInput(email),
+//   });
+// };
 
 /* Invoices --------------------------------------- */
 

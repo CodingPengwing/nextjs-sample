@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import PropTypes from "prop-types";
 import React from "react";
 // import { Link as RouterLink } from "react-router-dom";
@@ -32,7 +32,7 @@ import EyeInvisibleOutlined from "@ant-design/icons/EyeInvisibleOutlined";
 
 // ============================|| JWT - LOGIN ||============================ //
 
-export default function AuthLogin({ isDemo = false }) {
+export default function AuthLogin() {
   const [checked, setChecked] = React.useState(false);
 
   const [showPassword, setShowPassword] = React.useState(false);
